@@ -28,3 +28,11 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+    - name: Upload Playwright traces
+      if: ${{ !cancelled() }}
+      uses: actions/upload-artifact@v3
+        with:
+        name: playwright-traces
+        path: playwright-report/**/*.zip
+        retention-days: 30
